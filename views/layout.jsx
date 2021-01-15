@@ -1,4 +1,5 @@
-var React = require('react');
+// var React = require('react');
+import React from 'react';
 
 function DefaultLayout(props) {
     return (
@@ -9,4 +10,4 @@ function DefaultLayout(props) {
     );
 }
 
-module.exports = DefaultLayout;
+export default DefaultLayout
