@@ -1,4 +1,3 @@
-
 names = [
     {
         "name": "Ville",
@@ -82,6 +81,49 @@ names = [
     }
 ]
 
+function compareAlphabetically(a, b) {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+}
+
+function compareAmounts(a, b) {
+    if (a.amount < b.amount) {
+        return 1;
+    }
+    if (a.amount > b.amount) {
+        return -1;
+    }
+    return 0;
+}
+
+function countNames(list) {
+    var totalCount = 0;
+    for (let i = 0; i < list.length; i++) {
+        totalCount = totalCount + list[i].amount;
+    }
+    return totalCount;
+}
+
 exports.index = function (req, res, next) {
     return res.render('index', { nameList: names });
+};
+
+exports.namesByAmount = function (req, res, next) {
+    names.sort(compareAmounts);
+    return res.json({ nameList: names });
+};
+
+exports.namesByAlphabetical = function (req, res, next) {
+    names.sort(compareAlphabetically);
+    return res.json({ nameList: names });
+};
+
+exports.namesCount = function (req, res, next) {
+    var names_in_list = countNames(names);
+    return res.json({ count: names_in_list });
 }
