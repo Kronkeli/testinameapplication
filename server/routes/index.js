@@ -19,12 +19,15 @@ router.get('/names-by-amount', function (req, res, next) {
 router.get('/names-by-alphabetical', function (req, res, next) {
   nameController.namesByAlphabetical(req, res, next);
 })
+
 /* GET the total amount of all the names. */
 router.get('/names-count', function (req, res, next) {
   nameController.namesCount(req, res, next);
 })
 
-
 /* GET the amount for a name in name list. */
+router.post('/find-name', function (req,res,next) {
+  nameController.findByName(req,res,next);
+})
 
 module.exports = router;

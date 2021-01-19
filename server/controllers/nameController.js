@@ -127,3 +127,12 @@ exports.namesCount = function (req, res, next) {
     var names_in_list = countNames(names);
     return res.json({ count: names_in_list });
 }
+
+exports.findByName = function(req,res,next) {
+    console.log(req.body.name);
+    var found = names.find(element => element.name === req.body.name);
+    if (found === undefined) {
+        return res.json({ count: 0});
+    }
+    return res.json({ count : found.amount});
+}

@@ -12,6 +12,7 @@ class App extends Component {
       ascendingOrder : false,
       isFindByName: false,
       inputName: '',
+      nameSearch: <br/>,
       message: "Press a button to list the names..."
     };
     this.getSortedAlphabetical = this.getSortedAlphabetical.bind(this);
@@ -105,8 +106,21 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
+    var xhr = new XMLHttpRequest();
+    
+    xhr.addEventListener('load', () => {
+      this.setState({
+        message: "There were " + xhr.response.count + " people found with the name \"" + this.state.value + "\"",
+        isLoaded: true
+      })
+    })
+
+    xhr.open('POST', 'http://localhost:3001/find-name');
+    xhr.responseType = 'json';
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var params = "name=" +  this.state.value;
+    xhr.send(params);
   }
 
   render(){
@@ -130,6 +144,7 @@ class App extends Component {
             </label>
           <input type="submit" value="Submit" />
           </form>
+          {this.state.nameSearch}
         </div>
       );
     }
