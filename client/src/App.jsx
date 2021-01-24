@@ -128,18 +128,19 @@ class App extends Component {
   }
 
   render(){
+    var buttons = <div className="buttons">
+    <button onClick={this.getSortedAlphabetical}>Sort by names</button>
+    <button onClick={this.getSortedAmounts}>Sort by amounts</button>
+    <button onClick={this.getCount}>Count</button>
+    <button onClick={this.findByName}>Find by name</button>
+  </div>;
     if (this.state.isFindByName) {
       return(
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
-          <div className="buttons">
-            <button onClick={this.getSortedAlphabetical}>Sort by names</button>
-            <button onClick={this.getSortedAmounts}>Sort by amounts</button>
-            <button onClick={this.getCount}>Count</button>
-            <button onClick={this.findByName}>Find by name</button>
-          </div>
+          {buttons}
           <h3>{this.state.message}</h3>
           <form onSubmit={this.handleSubmit}>
             <label>
@@ -158,12 +159,7 @@ class App extends Component {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
-          <div className="buttons">
-            <button onClick={this.getSortedAlphabetical}>Sort by names</button>
-            <button onClick={this.getSortedAmounts}>Sort by amounts</button>
-            <button onClick={this.getCount}>Count</button>
-            <button onClick={this.findByName}>Find by name</button>
-          </div>
+          {buttons}
           <h3>{this.state.message}</h3>
         </div>
       );
@@ -174,12 +170,7 @@ class App extends Component {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
-          <div className="buttons">
-            <button onClick={this.getSortedAlphabetical}>Sort by names</button>
-            <button onClick={this.getSortedAmounts}>Sort by amounts</button>
-            <button onClick={this.getCount}>Count</button>
-            <button onClick={this.findByName}>Find by name</button>
-          </div>
+          {buttons}
           <h3>{this.state.message}</h3>
           <List list={this.state.names} order={this.state.ascendingOrder} />
         </div>
