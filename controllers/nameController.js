@@ -115,7 +115,7 @@ exports.index = function (req, res, next) {
 
 exports.namesByAmount = function (req, res, next) {
     names.sort(compareAmounts);
-    return res.json({ nameList: names });
+    return res.sendFile(path.resolve(__dirname, '../client/build'));
 };
 
 exports.namesByAlphabetical = function (req, res, next) {
