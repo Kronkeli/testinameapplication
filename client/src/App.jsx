@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import React, {Component} from 'react';
 import './App.css';
 import List from './List';
+import createHttpError from 'http-errors';
 
 class App extends Component {
   constructor() {
@@ -45,7 +46,8 @@ class App extends Component {
     })
 
     // xhr.open('GET', 'http://localhost:8080/names-by-alphabetical');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-by-alphabetical')
+    // xhr.open('GET', 'http://192.168.99.100:8080/names-by-alphabetical')
+    xhr.open('GET', 'https://testi-applikaatio.herokuapp.com/names-by-alphabetical');
     xhr.responseType = 'json';
     xhr.send();
   }
@@ -67,7 +69,7 @@ class App extends Component {
     })
 
     // xhr.open('GET', 'http://localhost:8080/names-by-amount');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-by-amount');
+    xhr.open('GET', 'http://https://testi-applikaatio.herokuapp.com/names-by-amount');
     xhr.responseType = 'json';
     xhr.send();
   }
@@ -85,7 +87,7 @@ class App extends Component {
     })
 
     // xhr.open('GET', 'http://localhost:8080/names-count');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-count');
+    xhr.open('GET', 'https://testi-applikaatio.herokuapp.com/names-count');
     xhr.responseType = 'json';
     xhr.send();
   }
@@ -120,7 +122,7 @@ class App extends Component {
     })
 
     // xhr.open('POST', 'http://localhost:8080/find-name');
-    xhr.open('POST', 'http://192.168.99.100:8080/find-name');
+    xhr.open('POST', 'https://testi-applikaatio.herokuapp.com/find-name');
     xhr.responseType = 'json';
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     var params = "name=" +  this.state.value;
